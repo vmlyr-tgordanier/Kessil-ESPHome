@@ -18,7 +18,7 @@ class KessilLightOutput : public light::LightOutput {
   light::LightTraits get_traits() override {
     auto traits = light::LightTraits();
     traits.set_supported_color_modes(
-      ColorCapability::BRIGHTNESS || ColorCapability::COLOR_TEMPERATURE
+      ColorMode::BRIGHTNESS | ColorMode::COLOR_TEMPERATURE
     );
     //traits.set_supports_brightness(true);
     //traits.set_supports_rgb(false);
