@@ -16,10 +16,8 @@ class KessilLightOutput : public light::LightOutput {
   void set_warm_white_temperature(float warm_white_temperature) { warm_white_temperature_ = warm_white_temperature; }
   light::LightTraits get_traits() override {
     auto traits = light::LightTraits();
-    traits.set_supports_brightness(true);
-    traits.set_supports_rgb(false);
-    traits.set_supports_rgb_white_value(false);
-    traits.set_supports_color_temperature(true);
+    std::set<light::ColorMode> color_modes = {light::ColorMode::BRIGHTNESS, light::ColorMode::COLOR_TEMPERATURE};
+    traits.set_supported_color_modes(color_modes);
     traits.set_min_mireds(this->cold_white_temperature_);
     traits.set_max_mireds(this->warm_white_temperature_);
     return traits;
